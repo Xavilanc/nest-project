@@ -13,6 +13,10 @@ export class UsersService {
     return await this.usersRepository.find();
   }
 
+  async getUserByEmail(email: string): Promise<User | undefined> {
+    return this.usersRepository.findOneBy({ email: email });
+  }
+
   async getUser(id: number): Promise<User[]> {
     return await this.usersRepository.find({
       // Properties to return. We don't want the password property.
